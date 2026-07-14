@@ -182,6 +182,22 @@ export const SlackFeed: React.FC<SlackFeedProps> = ({ backendUrl }) => {
 
         {/* Message View Area */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          {error && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.75rem 1rem',
+              background: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              borderRadius: 'var(--radius-md)',
+              color: '#f87171',
+              fontSize: '0.875rem'
+            }}>
+              <ShieldAlert size={16} />
+              <span>{error}</span>
+            </div>
+          )}
           {filteredMessages.map((msg) => {
             const isCopilotMessage = msg.text.includes('Tasks Synchronized') || msg.text.includes('Jira status update') || msg.text.includes('Copilot');
             let blockData = null;

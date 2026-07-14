@@ -13,7 +13,6 @@ import {
   PhoneOff, 
   Share2, 
   CheckCircle2, 
-  ArrowRight,
   ClipboardList
 } from 'lucide-react';
 
@@ -25,7 +24,7 @@ interface TeamsMeetingProps {
 export const TeamsMeeting: React.FC<TeamsMeetingProps> = ({ backendUrl, onSyncComplete }) => {
   // Presets and selection
   const [selectedPreset, setSelectedPreset] = useState<ScenarioPreset>(PRESETS[0]);
-  const [transcriptLines, setTranscriptLines] = useState<TranscriptLine[]>([]);
+  
   
   // Meeting running state
   const [isMeetingActive, setIsMeetingActive] = useState(false);
@@ -49,7 +48,7 @@ export const TeamsMeeting: React.FC<TeamsMeetingProps> = ({ backendUrl, onSyncCo
 
   const transcriptEndRef = useRef<HTMLDivElement>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
-  const transcriptTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const transcriptTimerRef = useRef<any>(null);
 
   // Load selected preset data
   useEffect(() => {
